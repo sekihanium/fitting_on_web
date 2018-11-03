@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href=
+"http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+rel="stylesheet">
+<nav class="navbar navbar-default" role="navigation">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+       {% for text, url in some_sequence %}
+       <li><a href="/{{url}}">{{ text }}</a></li>
+       {% endfor %}
+       </ul>
+</div>
+</nav>
+<form method=post action="">
+<table> <!-- table with forms to the left and plot to the right -->
+<tr><td>
+<table>
+  {% for field in form %}
+    <tr>
+    <td>{{ field.name }}</td><td>{{ field }}</td>
+    <td>{{ field.label }}</td>
+    </tr>
+  {% endfor %}
+    <tr>
+      <td><p><input type=submit value=Compute></p></td>
+    </tr>
+</table>
+</td>
+
+<td>
+<p>
+{% if result != None %}
+  {% for f in result %}
+<img src="data:image/png;base64,{{ f }}" width="500">
+  {% endfor %}
+{% endif %}
+</p>
+</td></tr>
+<td></td>
+</table>
+</form>
+
+
+</html>
